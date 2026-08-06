@@ -253,7 +253,7 @@ impl ModelProviderInfo {
         ) {
             CHATGPT_CODEX_BASE_URL
         } else {
-            "https://api.openai.com/v1"
+            "https://api.deepinfra.com/v1/openai"
         };
         let base_url = self
             .base_url

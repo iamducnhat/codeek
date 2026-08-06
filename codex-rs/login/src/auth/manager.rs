@@ -837,15 +837,20 @@ fn persist_agent_identity_record(
     Ok(())
 }
 
-pub const OPENAI_API_KEY_ENV_VAR: &str = "OPENAI_API_KEY";
+pub const OPENAI_API_KEY_ENV_VAR: &str = "DEEPINFRA_API_KEY";
 pub const CODEX_API_KEY_ENV_VAR: &str = "CODEX_API_KEY";
 pub const CODEX_ACCESS_TOKEN_ENV_VAR: &str = "CODEX_ACCESS_TOKEN";
 
 pub fn read_openai_api_key_from_env() -> Option<String> {
-    env::var(OPENAI_API_KEY_ENV_VAR)
-        .ok()
-        .map(|value| value.trim().to_string())
-        .filter(|value| !value.is_empty())
+    for var_name in ["DEEPINFRA_API_KEY", "DEEPINFRA_TOKEN", "DEEPINFRA_KEY", "OPENAI_API_KEY"] {
+        if let Ok(val) = env::var(var_name) {
+            let trimmed = val.trim().to_string();
+            if !trimmed.is_empty() {
+                return Some(trimmed);
+            }
+        }
+    }
+    None
 }
 
 pub fn read_codex_api_key_from_env() -> Option<String> {
