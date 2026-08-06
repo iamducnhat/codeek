@@ -43,10 +43,10 @@ pub enum ReasoningEffort {
     None,
     Minimal,
     Low,
-    #[default]
     Medium,
     High,
     XHigh,
+    #[default]
     Max,
     Ultra,
     /// A model-defined effort value that this client does not know yet.
@@ -54,6 +54,18 @@ pub enum ReasoningEffort {
 }
 
 impl ReasoningEffort {
+    /// Returns thinking label used for display (e.g. codeek-v4-max, codeek-v4-medium).
+    pub fn thinking_label(&self) -> &str {
+        match self {
+            Self::Max | Self::Ultra | Self::XHigh => "codeek-v4-max",
+            Self::High => "codeek-v4-high",
+            Self::Medium => "codeek-v4-medium",
+            Self::Low | Self::Minimal => "codeek-v4-low",
+            Self::None => "codeek-v4-off",
+            Self::Custom(label) => label,
+        }
+    }
+
     /// Returns the exact value used on the wire.
     pub fn as_str(&self) -> &str {
         match self {
