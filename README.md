@@ -4,6 +4,20 @@ Codeek is a command-line coding agent powered by DeepInfra and DeepSeek AI. It r
 
 Default Model: `deepseek-ai/DeepSeek-V4-Flash-0731` with thinking mode enabled (`reasoning_effort="max"` / `codeek-v4-max`).
 
+## Installation
+
+Run the following command in terminal to install Codeek CLI:
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/iamducnhat/codeek/main/install.sh | bash
+```
+
+To uninstall Codeek CLI:
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/iamducnhat/codeek/main/uninstall.sh | bash
+```
+
 ---
 
 ## Quickstart
