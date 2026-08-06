@@ -1,15 +1,27 @@
-# Configuration
+# Configuration Guide for Codeek
 
-For basic configuration instructions, see [this documentation](https://developers.openai.com/codex/config-basic).
+Codeek uses TOML configuration files located at `~/.codeek/config.toml` (or standard environment variables).
 
-For advanced configuration instructions, see [this documentation](https://developers.openai.com/codex/config-advanced).
+## Default Settings
 
-For a full configuration reference, see [this documentation](https://developers.openai.com/codex/config-reference).
+- **Provider**: DeepInfra (`https://api.deepinfra.com/v1/openai`)
+- **Default Model**: `deepseek-ai/DeepSeek-V4-Flash-0731`
+- **Thinking Mode**: `thinking` (`reasoning_effort="max"`)
 
-## Lifecycle hooks
+## Configuration Options
 
-Admins can set top-level `allow_managed_hooks_only = true` in
-`requirements.toml` to ignore user, project, and session hook configs while
-still allowing managed hooks from requirements and managed config layers. This
-setting is only supported in `requirements.toml`; putting it in `config.toml`
-does not enable managed-hooks-only mode.
+```toml
+model = "deepseek-ai/DeepSeek-V4-Flash-0731"
+model_provider = "deepinfra"
+
+[model_providers.deepinfra]
+base_url = "https://api.deepinfra.com/v1/openai"
+env_key = "DEEPINFRA_API_KEY"
+```
+
+## Thinking Mode Presets
+
+- `codeek-v4-max`: Maximum reasoning effort.
+- `codeek-v4-high`: High reasoning effort.
+- `codeek-v4-medium`: Balanced reasoning effort.
+- `codeek-v4-low`: Low reasoning effort.
