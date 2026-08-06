@@ -23,7 +23,7 @@ fi
 
 echo "Building Codeek release executable..."
 cd "$BUILD_DIR/codex-rs"
-cargo build --release --bin codex
+cargo build --release --bin codex --ignore-rust-version
 
 BINARY_SOURCE="$BUILD_DIR/codex-rs/target/release/codex"
 
