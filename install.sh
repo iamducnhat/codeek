@@ -12,7 +12,7 @@ fi
 
 TEMP_DIR=""
 
-if [ -f "Cargo.toml" ] && [ -d "codex-rs" ]; then
+if [ -d "codex-rs" ] && [ -f "codex-rs/Cargo.toml" ]; then
     BUILD_DIR="$(pwd)"
 else
     TEMP_DIR=$(mktemp -d /tmp/codeek_install_XXXXXX)
